@@ -3,56 +3,42 @@
   <div class="tb">
     <input type="text" v-model="search" placeholder="search"/>
 
-    <table id = 'table'>
+    <table cellspacing='0' id = 'table'>
     <!-- <div id = 'div1'> -->
     <thead>
       <tr id = 'thead'>
         <!-- currentSort -->
-        <!-- <th @click="sort(i)" :class="[currentSort==i && (currentSortDir=='asc'?'asc': 'desc')] " v-for="i in headers" :key="i">
-        <span id="i">{{i}}</span> -->
+        <th @click="sort(i)" :class="[currentSort==i && (currentSortDir=='asc'?'asc': 'desc')] " v-for="i in headers" :key="i">
+        <span id="i">{{i}}</span>
           
-          <!-- <div class="header">
+          <div class="header">
           <i v-if="currentSort == i && currentSortDir=='desc'" class="fa-solid fa-sort-down fa-2xs"></i>
             <i v-else-if="currentSort == i && currentSortDir=='asc'" class="fa-solid fa-sort-up fa-2xs"></i>
         
-            </div> -->
+            </div>
         
-        <!-- </th> -->
-        <th  @click="sort('name')" :class="[currentSort=='name' && (currentSortDir=='asc'?'asc': 'desc')] " >Name</th>
-        <!-- <th  @click="sort('name')" :class="solve('name')? find():'last'" ref = 'name'>Name</th> -->
-        <th  @click="sort('age')" :class="[currentSort=='age' && (currentSortDir=='asc'?'asc': 'desc')] ">Age</th>
-        <!-- <th  @click="sort('age')" :class="solve('age')? find():'last'"  >Age</th> -->
-        <th  @click="sort('breed')" :class="[currentSort=='breed' && (currentSortDir=='asc'?'asc': 'desc')] " >Breed</th>
-        <!-- <th  @click="sort('breed')" :class="solve('breed')? find():'last'"  >Breed</th> -->
-        <th  @click="sort('gender')" :class="[currentSort=='gender' && (currentSortDir=='asc'?'asc': 'desc')] " >Gender</th>
-        <!-- <th  @click="sort('gender')" :class="solve('gender')? find():'last'" >Gender</th> -->
+        </th>
       </tr>
-      <!-- :class="solve('age')? find():'last'" -->
     </thead>
-    <!-- </div> -->
-    
-     <!-- <div id = 'div3'> -->
     
     <tbody id="tbody">
 
        <!-- //4. // no match - no search results -->
-      <tr v-for="cat in filteredRecords" :key="cat">
+      <tr v-for="cat in filterRecords" :key="cat">
         <td v-for="i in Object.values(cat)" :key="i">{{i}}</td>
       </tr>
     </tbody>
     <!-- </div> -->
-    <!-- <div v-show="filteyellowRecords.length == 0" id = div2> -->
+    <!-- <div v-show="filterRecords.length == 0" id = div2> -->
       
     <!-- </div> -->
     
     
   </table>
-    <p v-show="filteredRecords.length == 0">No search results found</p>
-  </div>
 
-<!-- <h3 v-show="filteyellowRecords.length == 0">No search results found</h3> -->
-<!-- <p v-show="filteredRecords.length == 0">No search results found</p> -->
-  <!-- </div> -->
+<!-- <h3 v-show="filterRecords.length == 0">No search results found</h3> -->
+<p v-show="filterRecords.length == 0">No search results found</p>
+  </div>
   
 </template>
 
@@ -99,11 +85,11 @@ export default {
     })
   },
   computed: {
-    filteredRecords(){
+    filterRecords(){
     // console.log(Object.keys(this.cats[0]))
 
       // joining all props of each object so to apply string includes method and search in it
-      const cats1 = this.cats.filter(this.fil)
+      const cats1 = this.cats.filter(this.searchFilter)
       return cats1}
     },
 
@@ -114,22 +100,7 @@ export default {
         
   
   methods: {
-    // using custom sort func for each attribute clicked
-    // solve(prop){
-    //   console.log("prop",prop,this.currentSort)
-    //   if (prop == this.currentSort){
-    //     return true
-    //   }
-    //   return false
-    // },
-    // find(){
-    //   console.log('find')
-    //   if (this.currentSortDir==='asc'){
-    //     return 'asc'
-    //   }
-    //   return 'desc'
-    // },
-    fil(obj){
+    searchFilter(obj){
       var ans = false
       for (const key in obj) {
           ans = ans || obj[key].toString().toLowerCase().includes(this.search.toString().toLowerCase())
@@ -183,8 +154,9 @@ export default {
 .tb {
   color:green;
   border:2px solid black;
-  width:300px;
-  margin-left: 480px;
+  width:400px;
+  /* margin:20px; */
+  margin-left: 430px;
 }
 th:hover{
   cursor: pointer;
@@ -197,12 +169,7 @@ td,th{
 }
 table{
   width:100%;
-  color:green;
   margin-top: 2px;
-  /* border:2px solid black; */
-  margin-left: auto; 
-  margin-right: auto;
-  /* border-collapse: collapse; */
 }
 .asc{
   color:white;
