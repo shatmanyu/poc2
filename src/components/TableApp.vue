@@ -3,7 +3,7 @@
   <div class="tb">
     <input type="text" v-model="search" placeholder="search"/>
 
-    <table cellspacing='0' id = 'table'>
+    <table id = 'table'>
     <!-- <div id = 'div1'> -->
     <thead>
       <tr id = 'thead'>
@@ -170,6 +170,7 @@ td,th{
 table{
   width:100%;
   margin-top: 2px;
+  border-collapse: collapse;
 }
 .asc{
   color:white;
