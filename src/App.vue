@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import TableApp from './components/TableApp.vue'
+import TableApp from './components/tableApp/TableApp.vue'
 
 export default {
   name: 'App',

@@ -1,0 +1,56 @@
+
+/* @export default { */
+.tb {
+    color:green;
+    border:2px solid black;
+    width:400px;
+    /* margin:20px; */
+    /* margin-left: 430px; */
+    
+  }
+  th:hover{
+    cursor: pointer;
+  }
+  td,th{
+    border:1px solid grey
+  }
+  table{
+    width:100%;
+    margin-top: 2px;
+    border-collapse: collapse;
+  }
+  .asc{
+    color:white;
+    background-color: darkgreen
+  }
+  .desc{
+    color:yellow;
+    background-color:brown
+  }
+  i{
+    margin-left: 10px;
+  }
+  
+  .header{
+    display:inline-block
+  
+  }
+  #title{
+    text-decoration: underline;
+  }
+  .container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 
+    sortng - background - dark green ; title = white
+    asc - down arrow
+    desc - up arrow 
+    no arrw for not sorting 
+    borders of table 
+  
+  
+   */
+/* } */
