@@ -2,18 +2,18 @@
 <div class="container">
 <h2 id="title"> Cats Data</h2>
   <div class="tb">
-    <input type="text" v-model="search" placeholder="search"/>
+    <input type="text" v-model="getSearch" placeholder="search"/>
 
     <table id = 'table'>
-   
+
     <thead>
       <tr id = 'thead'>
-        <th @click="sort(i)" :class="[currentSort==i && (currentSortDir=='asc'?'asc': 'desc')] " v-for="i in headers" :key="i">
+        <th @click="sort(i)" :class="[getCurrentSort==i && (getCurrentSortDir=='asc'?'asc': 'desc')] " v-for="i in getHeaders" :key="i">
         <span id="i">{{i}}</span>
           
           <div class="header">
-          <i v-if="currentSort == i && currentSortDir=='desc'" class="fa-solid fa-sort-down fa-2xs"></i>
-            <i v-else-if="currentSort == i && currentSortDir=='asc'" class="fa-solid fa-sort-up fa-2xs"></i>
+          <i v-if="getCurrentSort == i && getCurrentSortDir=='desc'" class="fa-solid fa-sort-down fa-2xs"></i>
+            <i v-else-if="getCurrentSort == i && getCurrentSortDir=='asc'" class="fa-solid fa-sort-up fa-2xs"></i>
         
             </div>
         
@@ -36,6 +36,8 @@
 </template>
 
 <script lang="js" src="./TableApp.js">
+// import store from '@/store/store.js';
+
 </script>
 
 <style lang ="css" src="./TableApp.css">
