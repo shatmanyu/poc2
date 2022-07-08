@@ -4,7 +4,7 @@ export default createStore({
 
     state:{
       cats:[],
-      cats1:[],
+      filteredRecords:[],
       headers:[],
       currentSort:'',
       currentSortDir:'asc',
@@ -16,11 +16,11 @@ export default createStore({
             state.search = newValue
         },
         setFilteredRecords(state,updatedCats){
-            state.cats1 = updatedCats
+            state.filteredRecords = updatedCats
         },
         setApiData(state,apiData){
             state.cats = apiData
-            state.cats1 = apiData
+            state.filteredRecords = apiData
         },
         setHeaders(state){
             if (state.cats.length > 0){
@@ -36,14 +36,14 @@ export default createStore({
             state.currentSort = att
         },
         sortDesc(state){
-            state.cats1 = state.cats1.sort((cat1,cat2)=>{
+            state.filteredRecords = state.filteredRecords.sort((cat1,cat2)=>{
                 if (cat1[state.currentSort] < cat2[state.currentSort]){
                   return 1
                 }
                 return -1
               })},
         sortAsc(state){
-            state.cats1 = state.cats1.sort((cat1,cat2)=>{
+            state.filteredRecords = state.filteredRecords.sort((cat1,cat2)=>{
                 if (cat1[state.currentSort] < cat2[state.currentSort]){
                   return -1
                 }
@@ -59,7 +59,7 @@ export default createStore({
         setFilteredRecords({commit},updatedCats){
             commit('setFilteredRecords',updatedCats)
         },
-        response({commit}){
+        getCatsApi({commit}){
             getData().then(res=>{
                 commit('setApiData',res.data)
                 commit('setHeaders')
@@ -82,11 +82,9 @@ export default createStore({
 
         },
         toggleSort({commit}){
-            // console.log('toggle')
             commit('toggleSort')
         },
         setCurrentSort({commit},att){
-            // console.log('setCurrentSort',att)
             commit('setCurrentSort',att)
         },
         sortDesc({commit}){
@@ -98,7 +96,6 @@ export default createStore({
     },
     getters:{
         currentSort(state){
-            // console.log("getCurrentSort11")
             return state.currentSort
         },
         currentSortDir(state){
@@ -107,8 +104,8 @@ export default createStore({
         cats(state){
             return state.cats
         },
-        cats1(state){
-            return state.cats1
+        filteredRecords(state){
+            return state.filteredRecords
         },
         headers(state){
             return state.headers
@@ -119,6 +116,5 @@ export default createStore({
 
     },
     modules:{
-
     }
 })

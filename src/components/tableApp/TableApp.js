@@ -2,74 +2,61 @@ import store from '@/store/store'
 export default {
   name :'TableApp',
   created(){
-    store.dispatch('response')
+    store.dispatch('getCatsApi')
   },
   computed: {
     getSearch:{
       get(){
-        return store.state.search
+        return store.getters.search
       },
       set(newValue){
-        // console.log("change text",store.state.search)
         store.dispatch('setSearch',newValue)
-        var updatedCats = store.state.cats.filter(this.searchFilter)
-        // console.log("updated Cats",updatedCats)
+        var updatedCats = this.getCats.filter(this.searchFilter)
         store.dispatch('setFilteredRecords',updatedCats)
       }
     },
     getHeaders(){
-      // console.log(store.state.headers)
-      return store.state.headers
+      return store.getters.headers
     },
     getCurrentSort(){
-      // console.log("getCurrentSort")
       return store.getters.currentSort
-      // console.log()
     },
     getCurrentSortDir(){
-      // console.log("getCurrentSort")
       return store.getters.currentSortDir
-      // console.log()
     },
+    filteredRecords(){
+      return store.getters.filteredRecords
+    },
+    getCats(){
+      return store.getters.cats
+    }
     
-    filterRecords(){
-      return store.state.cats1
-  
-    },
   },
-
-    // }
-    //1. // join? 
-       // why join - behaviour
-       // remove join 
-        
   
   methods: {
+    // filtering data on the basis of search 
     searchFilter(obj){
       var ans = false
       for (const key in obj) {
-          ans = ans || obj[key].toString().toLowerCase().includes(store.state.search.toString().toLowerCase())
+          ans = ans || obj[key].toString().toLowerCase().includes(store.getters.search.toString().toLowerCase())
         }
       return ans
     },
-    
     sort(att){
       // sorting 
         if (att == this.getCurrentSort){
           store.dispatch('toggleSort')
-        }
+          }
         else{
           store.dispatch('setCurrentSort',att)}
       
       if (this.getCurrentSortDir == 'desc'){
-        // console.log('desc')
           store.dispatch('sortDesc')
-      // 
-    }
+         }
       else{
         store.dispatch('sortAsc')
         }
-        }
+      }
       
     },
 

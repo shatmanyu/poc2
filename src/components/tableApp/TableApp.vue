@@ -23,13 +23,12 @@
     
     <tbody id="tbody">
 
-       <!-- //4. // no match - no search results -->
-      <tr v-for="cat in filterRecords" :key="cat">
+      <tr v-for="cat in filteredRecords" :key="cat">
         <td v-for="i in Object.values(cat)" :key="i">{{i}}</td>
       </tr>
     </tbody>
   </table>
-<p v-show="filterRecords.length == 0">No search results found</p>
+<p v-show="filteredRecords.length == 0">No search results found</p>
   </div>
 </div>
   
