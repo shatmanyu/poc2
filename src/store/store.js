@@ -104,6 +104,19 @@ export default createStore({
         currentSortDir(state){
             return state.currentSortDir
         },
+        cats(state){
+            return state.cats
+        },
+        cats1(state){
+            return state.cats1
+        },
+        headers(state){
+            return state.headers
+        },
+        search(state){
+            return state.search
+        }
+
     },
     modules:{
 
