@@ -81,10 +81,6 @@ export default createStore({
               })
 
         },
-        // sort(att){
-        //     console.log('from store sort',att)
-
-        // },
         toggleSort({commit}){
             // console.log('toggle')
             commit('toggleSort')
@@ -108,10 +104,6 @@ export default createStore({
         currentSortDir(state){
             return state.currentSortDir
         },
-        // search(state){
-        //     return state.search
-        // }
-
     },
     modules:{
 

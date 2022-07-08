@@ -55,7 +55,6 @@ export default {
     
     sort(att){
       // sorting 
-      // console.log("from comp sort",this.getCurrentSort,this.getCurrentSortDir)
         if (att == this.getCurrentSort){
           store.dispatch('toggleSort')
         }

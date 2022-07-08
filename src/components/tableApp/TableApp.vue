@@ -36,8 +36,6 @@
 </template>
 
 <script lang="js" src="./TableApp.js">
-// import store from '@/store/store.js';
-
 </script>
 
 <style lang ="css" src="./TableApp.css">
