@@ -23,12 +23,18 @@
     
     <tbody id="tbody">
 
-      <tr v-for="cat in filteredRecords" :key="cat">
+      <tr v-for="cat in displayData" :key="cat">
         <td v-for="i in Object.values(cat)" :key="i">{{i}}</td>
       </tr>
     </tbody>
   </table>
-<p v-show="filteredRecords.length == 0">No search results found</p>
+  <p v-show="filteredRecords.length == 0">No search results found</p>
+  <div class="btns" v-if="filteredRecords.length > 0">
+    <button @click="getPreviousPage()" v-if="getPresentPage > 1">prev</button>
+    <button type="display">{{getPresentPage}}</button>
+    <button @click="getNextPage()" v-if="getPresentPage < getCountOfPages" >next</button>
+  </div>
+
   </div>
 </div>
   

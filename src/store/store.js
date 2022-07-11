@@ -3,20 +3,25 @@ import { createStore } from "vuex";
 export default createStore({
 
     state:{
+      presentPage:1,
+      pageSize:5,
       cats:[],
       filteredRecords:[],
       headers:[],
       currentSort:'',
       currentSortDir:'asc',
       search:'' ,
-
     },
     mutations:{
         setSearch(state,newValue){
             state.search = newValue
         },
-        setFilteredRecords(state,updatedCats){
+        setFilteredRecords(state,updatedCats){ 
             state.filteredRecords = updatedCats
+        },
+        setPresentPage(state){
+            state.presentPage = 1
+            state.currentSort=''
         },
         setApiData(state,apiData){
             state.cats = apiData
@@ -48,9 +53,16 @@ export default createStore({
                   return -1
                 }
                 return 1
-              })}
+              })},
+        getNextPage(state){
+            state.presentPage += 1 
+            },
+        getPreviousPage(state){
+            state.presentPage -= 1 
+            },
 
         },
+        
         
     actions:{
         setSearch({commit},newValue){
@@ -112,8 +124,16 @@ export default createStore({
         },
         search(state){
             return state.search
+        },
+        countOfPages(state){
+            return state.filteredRecords.length/state.pageSize
+        },
+        presentPage(state){
+            return state.presentPage
+        },
+        pageSize(state){
+            return state.pageSize
         }
-
     },
     modules:{
     }

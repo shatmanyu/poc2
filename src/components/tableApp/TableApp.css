@@ -1,11 +1,8 @@
 
-/* @export default { */
 .tb {
     color:green;
     border:2px solid black;
     width:400px;
-    /* margin:20px; */
-    /* margin-left: 430px; */
     
   }
   th:hover{
@@ -44,13 +41,9 @@
     align-items: center;
     justify-content: center;
   }
-  /* 
-    sortng - background - dark green ; title = white
-    asc - down arrow
-    desc - up arrow 
-    no arrw for not sorting 
-    borders of table 
-  
-  
-   */
-/* } */
+  .btns{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
