@@ -60,6 +60,9 @@ export default createStore({
         getPreviousPage(state){
             state.presentPage -= 1 
             },
+        changePresentPage(state,newValue){
+            state.presentPage = newValue
+        }
 
         },
         
@@ -126,7 +129,7 @@ export default createStore({
             return state.search
         },
         countOfPages(state){
-            return state.filteredRecords.length/state.pageSize
+            return Math.ceil(state.filteredRecords.length/state.pageSize)
         },
         presentPage(state){
             return state.presentPage

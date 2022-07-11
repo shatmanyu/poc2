@@ -1,10 +1,9 @@
 import store from '@/store/store'
 export default {
   name :'TableApp',
-  
+
   created(){
     store.dispatch('getCatsApi')
-   
   },
   computed: {
     getAddList(){
@@ -56,6 +55,10 @@ export default {
   
   methods: {
 
+    getCountOfPagesHelper(){
+      return this.getCountOfPages
+    },
+
     // filtering data on the basis of search 
     getNextPage() {
       if (this.getPresentPage < this.getCountOfPages){
@@ -72,6 +75,9 @@ export default {
           ans = ans || obj[key].toString().toLowerCase().includes(store.getters.search.toString().toLowerCase())
         }
       return ans
+    },
+    changePresentPage(newValue){
+      store.commit('changePresentPage',newValue)
     },
     sort(att){
       // sorting 

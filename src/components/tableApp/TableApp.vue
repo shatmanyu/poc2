@@ -30,8 +30,10 @@
   </table>
   <p v-show="filteredRecords.length == 0">No search results found</p>
   <div class="btns" v-if="filteredRecords.length > 0">
-    <button @click="getPreviousPage()" v-if="getPresentPage > 1">prev</button>
-    <button type="display">{{getPresentPage}}</button>
+  <button @click="getPreviousPage()" v-if="getPresentPage > 1">prev</button>
+  <div v-for="btn in getCountOfPagesHelper()" :key="btn">
+    <button @click="changePresentPage(btn)" :class="[getPresentPage==btn && 'active' ]"> {{btn}} </button>
+  </div>
     <button @click="getNextPage()" v-if="getPresentPage < getCountOfPages" >next</button>
   </div>
 
