@@ -89,9 +89,11 @@ export default {
       
       if (this.getCurrentSortDir == 'desc'){
           store.dispatch('sortDesc')
+          store.commit('setPresentPage')
          }
       else{
         store.dispatch('sortAsc')
+        store.commit('setPresentPage')
         }
       }
       

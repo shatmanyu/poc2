@@ -5,10 +5,10 @@
     <input type="text" v-model="getSearch" placeholder="search"/>
 
     <table id = 'table'>
-
+<!-- :class="[getCurrentSort==i && (getCurrentSortDir=='asc'?'asc': 'desc')] " -->
     <thead>
       <tr id = 'thead'>
-        <th @click="sort(i)" :class="[getCurrentSort==i && (getCurrentSortDir=='asc'?'asc': 'desc')] " v-for="i in getHeaders" :key="i">
+        <th @click="sort(i)"  v-for="i in getHeaders" :key="i">
         <span id="i">{{i}}</span>
           
           <div class="header">

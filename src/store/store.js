@@ -21,7 +21,6 @@ export default createStore({
         },
         setPresentPage(state){
             state.presentPage = 1
-            state.currentSort=''
         },
         setApiData(state,apiData){
             state.cats = apiData
