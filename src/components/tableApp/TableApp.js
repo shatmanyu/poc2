@@ -1,12 +1,7 @@
 import store from '@/store/store'
 export default {
   name :'TableApp',
-  data(){
-    return {
-
-    addPageList:[],
-  }
-  },
+  
   created(){
     store.dispatch('getCatsApi')
    
@@ -95,6 +90,5 @@ export default {
       }
       
     },
-
 
   }
